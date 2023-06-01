@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: train-schedule
-        image: nodejsproject:latest
+        image: vaishnavi2199/nodejsproject
         ports:
         - containerPort: 8080
         livenessProbe:
