@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         dockerImage = ''
-        registry = 'vaishnavi2199/Edureka-Project'
+        registry = 'vaishnavi2199/nodejsproject'
         registryCrendential = 'dockerhub'
     }
    stages{
