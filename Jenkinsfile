@@ -5,7 +5,7 @@ pipeline {
         registry = 'vaishnavi2199/nodejsproject'
         registryCrendential = 'dockerhub'
     }
-    stages{
+   stages{
         stage ('checkout'){
             steps {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Vaishnavi-Murugan21/cicd-pipeline-train-schedule-autodeploy.git']])
@@ -27,5 +27,12 @@ pipeline {
               }
           }
       }
+    stage ('Deploying application to kubernetes') {
+        steps {
+            script {
+                kubernetesDeploy (configs: 'train-schedule-kube.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig1', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://'])
+            }
+        }
     }
+  }
 }
